@@ -1,0 +1,63 @@
+import { Suspense } from "react";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import Heading from "@/components/Heading";
+import SearchProductPage from "../components/SearchProductPage";
+import { getProducts } from "@/services/api";
+import { SkeletonCards } from "@/components/Skeleton";
+import CardProducts from "../components/CardProducts";
+import { PaginationPage } from "@/components/PaginationPage";
+import { Button } from "@/components/ui/button";
+
+type ProductsProps = {
+  searchParams: {
+    search?: string;
+    page: number;
+    pageSize: number;
+  };
+};
+
+export default async function ProductPage({ searchParams }: ProductsProps) {
+  const search = searchParams.search as string;
+  const page = +searchParams.page || 1;
+  const pageSize = 6;
+  if (page < 0) redirect("/productos");
+
+  const { products, productCount } = await getProducts({
+    search,
+    page,
+    pageSize,
+  });
+  const totalPages = productCount > 0 ? Math.ceil(productCount / pageSize) : 1;
+  if (page > totalPages) redirect("/productos");
+
+  return (
+    <>
+      {search ? (
+        <Heading imageUrl="/banner-products.jpeg">Búsqueda</Heading>
+      ) : (
+        <Heading imageUrl="/banner-products.jpeg">Productos</Heading>
+      )}
+      <div className="flex justify-between items-center ">
+        <SearchProductPage placeholder="Buscar..." />
+        {search && (
+          <Link href="/productos">
+            <Button className="bg-red-500">Volver</Button>
+          </Link>
+        )}
+      </div>
+
+      <Suspense fallback={<SkeletonCards />}>
+        <CardProducts products={products} />
+      </Suspense>
+      {productCount > 0 && (
+        <PaginationPage
+          search={search}
+          page={page}
+          totalPages={totalPages}
+          url="productos"
+        />
+      )}
+    </>
+  );
+}
