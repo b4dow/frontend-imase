@@ -34,7 +34,7 @@ export const Footer = () => {
     <footer className="mt-20 ">
       <div className="flex flex-col justify-center items-center  w-full mx-auto">
         <Image
-          src={"/logo-oficial.png"}
+          src={"/logo-oficial.webp"}
           alt="logo imase"
           width={100}
           height={100}

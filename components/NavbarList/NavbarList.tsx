@@ -7,7 +7,7 @@ export function NavbarList() {
     <>
       <nav className="flex items-center justify-between py-5 max-w-7xl mx-auto px-5">
         <div>
-          <Image src="/logo-oficial.png" alt="Logo" width={100} height={50} />
+          <Image src="/logo-oficial.webp" alt="Logo" width={100} height={50} />
         </div>
         <div>
           <div className="hidden items-center justify-between sm:flex">

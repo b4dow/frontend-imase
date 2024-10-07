@@ -22,8 +22,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
-    ],
-    disableStaticImages: true,
+    ]
   },
   experimental: {
     serverActions: {
