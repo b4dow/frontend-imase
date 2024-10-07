@@ -23,12 +23,13 @@ const nextConfig = {
         hostname: "res.cloudinary.com",
       },
     ],
+    disableStaticImages: true,
   },
   experimental: {
     serverActions: {
-      bodySizeLimit: '2mb'
-    }
-  }
+      bodySizeLimit: "2mb",
+    },
+  },
 };
 
 export default nextConfig;

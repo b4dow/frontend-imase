@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { NavbarMobile } from "@/components/NavbarMobile";
-import Logo from "@/public/logo-oficial.png";
 import Image from "next/image";
 
 export function NavbarList() {
@@ -8,7 +7,7 @@ export function NavbarList() {
     <>
       <nav className="flex items-center justify-between py-5 max-w-7xl mx-auto px-5">
         <div>
-          <Image src={Logo} alt="Logo" width={100} height={50} />
+          <Image src="/logo-oficial.png" alt="Logo" width={100} height={50} />
         </div>
         <div>
           <div className="hidden items-center justify-between sm:flex">

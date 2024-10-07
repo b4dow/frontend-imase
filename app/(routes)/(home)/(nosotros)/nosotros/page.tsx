@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { CarouselAbout } from "../components/CarouselAbout/CarouselAbout";
-import ImagePrimary from "@/public/image-about-section.png";
-import ImageSecondary from "@/public/image-about-section-second.png";
 
 export default function Nosotros() {
   return (
@@ -18,7 +16,7 @@ export default function Nosotros() {
         <div className="relative sm:w-1/2 w-full h-72">
           <Image
             className="object-cover rounded-xl"
-            src={ImagePrimary}
+            src="/image-about-section.png"
             alt="image about"
             fill
           />
@@ -28,7 +26,7 @@ export default function Nosotros() {
         <div className="relative sm:w-1/2 w-full h-60 ">
           <Image
             className="w-full h-full object-cover rounded-xl"
-            src={ImageSecondary}
+            src="/image-about-section-second.png"
             alt="image about"
             fill
           />
