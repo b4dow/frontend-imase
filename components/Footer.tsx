@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "@/public/logo-oficial.png";
 
 const FooterNav = [
   {
@@ -34,7 +35,7 @@ export const Footer = () => {
     <footer className="mt-20 ">
       <div className="flex flex-col justify-center items-center  w-full mx-auto">
         <Image
-          src="/logo-oficial.png"
+          src={Logo}
           alt="logo imase"
           width={100}
           height={100}
