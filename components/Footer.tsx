@@ -91,7 +91,7 @@ export const Footer = () => {
             </svg>
           </div>
         </div>
-        <p className="text-center font-extrabold pt-5 text-sm">
+        <p className="text-center font-light pt-5 text-lg">
           © {year.getFullYear()} - Todos los derechos reservados - creado por{" "}
           <a
             href="https://google.com"

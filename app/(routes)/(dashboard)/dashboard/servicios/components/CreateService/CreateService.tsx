@@ -38,7 +38,6 @@ export function CreateService() {
       return;
     }
     const service = await createServiceAction(result.data);
-    console.log(service);
     toast.success(service);
     router.refresh();
     redirect("/dashboard/servicios");

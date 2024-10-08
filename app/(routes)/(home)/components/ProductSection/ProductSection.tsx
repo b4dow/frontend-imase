@@ -9,16 +9,16 @@ export async function ProductSection() {
       <h2 className="text-red-500 text-center font-bold mb-10 text-4xl">
         Nuestros Productos Destacados
       </h2>
-      {products.length ? (
+      {!products.length ? (
+        <p className="text-2xl font-black text-black/70 text-center">
+          No hay datos
+        </p>
+      ) : (
         <div className="grid grid-cols-1 sm:grid-cols-3 w-full gap-4">
           {products.map((item: DataProps) => (
             <Card key={item.id} url="productos" data={item} />
           ))}
         </div>
-      ) : (
-        <p className="text-2xl font-black text-black/70 text-center">
-          No hay datos
-        </p>
       )}
     </section>
   );

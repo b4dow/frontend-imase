@@ -10,7 +10,7 @@ export function Sidebar() {
           <div className="relative flex items-center justify-center">
             <Link href="/dashboard">
               <Image
-                src="/logo-oficial.png"
+                src="/logo-oficial.webp"
                 alt="Logo"
                 width={120}
                 height={50}
