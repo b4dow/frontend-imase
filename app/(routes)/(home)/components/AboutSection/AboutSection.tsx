@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function AboutSection() {
   return (
-    <section className="my-20">
+    <section className="container py-10 my-10  mx-auto ">
       <div className="text-center sm:text-start sm:flex justify-around items-center">
         <div className="mx-5 sm:w-72 mb-10">
           <h2>

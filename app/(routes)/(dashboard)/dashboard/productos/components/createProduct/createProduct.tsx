@@ -39,6 +39,9 @@ export function CreateProduct() {
     }
     const product = await createProductAction(result.data);
     console.log(product);
+    if (product.statusCode === 400) {
+      toast.error(product.message);
+    }
     toast.success(product);
     router.refresh();
     redirect("/dashboard/productos");
@@ -49,7 +52,9 @@ export function CreateProduct() {
       <div className="flex justify-end">
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-red-500">Crear Producto</Button>
+            <Button className="bg-red-500 hover:bg-black/95">
+              Crear Producto
+            </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -58,7 +63,9 @@ export function CreateProduct() {
             <form action={handleForm}>
               <ServiceForm />
               <DialogFooter>
-                <Button type="submit">Enviar</Button>
+                <Button type="submit" className="w-full bg-red-500 hover:bg-black/95">
+                  Enviar
+                </Button>
               </DialogFooter>
             </form>
           </DialogContent>

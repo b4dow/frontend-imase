@@ -1,5 +1,5 @@
 import React from "react";
-import { SkeletonServices } from "../(home)/(servicios)/components/SkeletonServices";
+import { SkeletonServices } from "../../../components/SkeletonHome/SkeletonServices";
 
 export default function loading() {
   return <SkeletonServices />;

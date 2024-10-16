@@ -38,6 +38,9 @@ export function CreateService() {
       return;
     }
     const service = await createServiceAction(result.data);
+    if (service.statusCode === 400) {
+      toast.error(service.message);
+    }
     toast.success(service);
     router.refresh();
     redirect("/dashboard/servicios");

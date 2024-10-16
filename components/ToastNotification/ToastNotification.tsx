@@ -2,6 +2,6 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import { ToastContainer } from "react-toastify";
 
-export default function ToastNotification() {
+export function ToastNotification() {
   return <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />;
 }

@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Heading from "@/components/Heading";
+import { HeadingBanner } from "@/components/HeadingBanner";
 import SearchProductPage from "../components/SearchProductPage";
 import { getProducts } from "@/services/api";
-import { SkeletonCards } from "@/components/Skeleton";
 import CardProducts from "../components/CardProducts";
+import { SkeletonCards } from "@/components/SkeletonHome";
 import { PaginationPage } from "@/components/PaginationPage";
 import { Button } from "@/components/ui/button";
 
@@ -34,9 +34,11 @@ export default async function ProductPage({ searchParams }: ProductsProps) {
   return (
     <>
       {search ? (
-        <Heading imageUrl="/banner-products.jpeg">Búsqueda</Heading>
+        <HeadingBanner  imageUrl="/banner-products.jpeg">Búsqueda</HeadingBanner>
       ) : (
-        <Heading imageUrl="/banner-products.jpeg">Productos</Heading>
+        <HeadingBanner imageUrl="/banner-products.jpeg">
+          Productos
+        </HeadingBanner>
       )}
       <div className="flex justify-between items-center ">
         <SearchProductPage placeholder="Buscar..." />

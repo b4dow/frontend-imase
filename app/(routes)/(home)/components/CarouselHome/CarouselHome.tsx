@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export function CarouselHome() {
   return (
-    <Carousel className="mx-auto w-full max-w-6xl">
+    <Carousel className="container mx-auto w-full  max-w-6xl">
       <CarouselContent>
         {Banner.map((item, index) => (
           <CarouselItem key={index}>
@@ -31,7 +31,7 @@ export function CarouselHome() {
                     {item.label}
                   </span>
                   <Link href={`/contacto`}>
-                    <Button>Contáctenos</Button>
+                    <Button className="bg-black/95 px-10 ">Contáctenos</Button>
                   </Link>
                 </CardContent>
               </Card>

@@ -35,6 +35,7 @@ const dataNavbar = [
 
 export function Navbar() {
   const pathname = usePathname();
+  console.log(pathname);
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -48,7 +49,7 @@ export function Navbar() {
               className={`${pathname ? "text-red-500" : ""}`}
             >
               <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()}hover:text-red-500`}
+                className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent active:bg-transparent hover:text-red-500 active:text-red-500 text-white text-lg font-bold `}
               >
                 {item.name}
               </NavigationMenuLink>

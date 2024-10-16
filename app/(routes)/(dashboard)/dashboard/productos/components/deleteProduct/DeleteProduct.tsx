@@ -24,8 +24,7 @@ export function DeleteProduct({ id }: DeleteProductProps) {
     const id = formData.get("id") as string;
 
     const response = await deleteProductAction(id);
-    console.log(response);
-    toast.success(response.data.msg);
+    toast.success(response);
     router.refresh();
     redirect("/dashboard/productos");
   };

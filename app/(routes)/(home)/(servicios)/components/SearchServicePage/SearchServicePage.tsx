@@ -41,7 +41,7 @@ export function SearchServicePage({ placeholder }: searchProps) {
       <div className="my-5 flex items-center justify-between w-full">
         <form action={handleSearchForm} className="flex">
           <div className="flex w-full max-w-sm items-center space-x-2">
-            <Input type="text" name="search" placeholder={placeholder} />
+            <Input type="text" name="search" placeholder={placeholder}  />
             <Button type="submit" className="bg-red-500">
               Buscar
             </Button>

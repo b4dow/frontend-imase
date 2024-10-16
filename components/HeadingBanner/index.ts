@@ -1,0 +1,1 @@
+export { HeadingBanner } from "./HeadingBanner";

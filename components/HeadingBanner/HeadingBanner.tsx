@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-type HeadingProps = {
+type HeadingBannerProps = {
   children: string;
   imageUrl?: string;
 };
 
-const Heading = ({ children, imageUrl }: HeadingProps) => {
+export const HeadingBanner = ({ children, imageUrl }: HeadingBannerProps) => {
   return (
-    <div className="relative bg-black h-[40vh] rounded-3xl overflow-hidden flex items-center justify-center mx-2">
+    <div className="relative bg-black h-[40vh] rounded-3xl overflow-hidden flex items-center justify-center mx-auto my-5 max-w-6xl">
       <Image
         src={`${
           !imageUrl
@@ -27,5 +27,3 @@ const Heading = ({ children, imageUrl }: HeadingProps) => {
     </div>
   );
 };
-
-export default Heading;

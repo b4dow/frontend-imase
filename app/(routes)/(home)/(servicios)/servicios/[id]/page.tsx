@@ -1,5 +1,5 @@
 import { getServiceById } from "@/services/api";
-import Heading from "@/components/Heading";
+import { HeadingBanner } from "@/components/HeadingBanner";
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCirclePlus } from "lucide-react";
@@ -10,7 +10,7 @@ const ServiceById = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <div className="my-10">
-        <Heading>{servicio.name}</Heading>
+        <HeadingBanner>{servicio.name}</HeadingBanner>
       </div>
       <div className="grid text-center grid-cols-1 sm:grid-cols-2 gap-5 mx-2">
         <div className="gap-4 ">

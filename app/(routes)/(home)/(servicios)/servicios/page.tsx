@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Heading from "@/components/Heading";
+import {HeadingBanner} from "@/components/HeadingBanner";
 import CardServices from "../components/CardServices";
 import { getServices } from "@/services/api";
 import { SearchServicePage } from "../components/SearchServicePage";
 import { Button } from "@/components/ui/button";
-import { SkeletonServices } from "../components/SkeletonServices";
+import { SkeletonServices } from "../../../../../components/SkeletonHome/SkeletonServices";
 import { PaginationPage } from "@/components/PaginationPage";
 
 type ServicePageProps = {
@@ -17,7 +17,7 @@ type ServicePageProps = {
 };
 
 export default async function ServicePage({ searchParams }: ServicePageProps) {
-  const search = searchParams.search as string;
+  const search = searchParams.search;
   const page = +searchParams.page || 1;
   const pageSize = 6;
   if (page < 0) redirect("/servicios");
@@ -34,12 +34,14 @@ export default async function ServicePage({ searchParams }: ServicePageProps) {
   return (
     <>
       {search ? (
-        <Heading imageUrl="/banner-products.jpeg">Búsqueda</Heading>
+        <HeadingBanner imageUrl="/banner-products.jpeg">Búsqueda</HeadingBanner>
       ) : (
-        <Heading imageUrl="/banner-products.jpeg">Servicios</Heading>
+        <HeadingBanner imageUrl="/banner-products.jpeg">Servicios</HeadingBanner>
       )}
       <div className="flex items-center ">
-        <SearchServicePage placeholder="Buscar..." />
+        <Suspense fallback={<SkeletonServices />}>
+          <SearchServicePage placeholder="Buscar..." />
+        </Suspense>
         {search && (
           <div className="btn rounded-none  bg-red-500 text-white">
             <Link href="/servicios">

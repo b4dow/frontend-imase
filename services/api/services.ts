@@ -31,13 +31,14 @@ export const getServices = async ({
       search ? `&name=${search}` : ""
     }`
   );
-  return data.data;
+  console.log(data);
+  return data;
 };
 
 export const getServicesHome = async () => {
   try {
     const { data } = await axios(`${APIUrls.servicios.all}?limit=3&offset=0`);
-    return data.data;
+    return data;
   } catch (error) {
     console.log(error);
   }

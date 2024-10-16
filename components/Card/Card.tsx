@@ -3,12 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const Card = ({ data, url }: { data: DataProps; url: DataProps["url"] }) => {
+export const Card = ({
+  data,
+  url,
+}: {
+  data: DataProps;
+  url: DataProps["url"];
+}) => {
   return (
     <>
       {!data.available ? null : (
-        <div className="">
-          <figure className="relative h-48 overflow-hidden rounded-2xl mx-2">
+        <div className="shadow-2xl shadow-black/70  rounded-2xl w-1/4">
+          <figure className="relative h-48 w-full overflow-hidden rounded-t-2xl">
             <Image
               src={data.image}
               alt={data.name}
@@ -22,19 +28,17 @@ const Card = ({ data, url }: { data: DataProps; url: DataProps["url"] }) => {
               {data.description}
             </p>
 
-            <Button className="w-full mt-5 bg-red-500">
-              <Link
-                href={`${url}/${data.id}`}
-                className="btn btn-error text-white"
-              >
+            <Link
+              href={`${url}/${data.id}`}
+              className="btn btn-error text-white"
+            >
+              <Button className="w-full mt-5 bg-red-500 hover:bg-black/95">
                 Ver detalles
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       )}
     </>
   );
 };
-
-export default Card;

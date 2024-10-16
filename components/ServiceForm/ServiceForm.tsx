@@ -7,11 +7,11 @@ type ServiceFormProps = {
   data?: DataProps;
 };
 
-export const ServiceForm = ({data} : ServiceFormProps) => {
+export const ServiceForm = ({ data }: ServiceFormProps) => {
   return (
     <div className="grid gap-4 py-4">
       <Input type="hidden" name="id" defaultValue={data?.id} />
-      <div className="grid grid-cols-4 items-center gap-4">
+      <div className="gap-4">
         <Label htmlFor="name" className="text-right">
           Nombre
         </Label>
@@ -23,7 +23,7 @@ export const ServiceForm = ({data} : ServiceFormProps) => {
           defaultValue={data?.name}
         />
       </div>
-      <div className="grid grid-cols-4 items-start gap-4">
+      <div className=" gap-4">
         <Label htmlFor="description" className="text-right">
           Descripción
         </Label>
@@ -36,7 +36,7 @@ export const ServiceForm = ({data} : ServiceFormProps) => {
         />
       </div>
 
-      <div className="grid grid-cols-4 items-center gap-4">
+      <div className="gap-4">
         <Label htmlFor="image" className="text-right">
           imagen
         </Label>
@@ -46,10 +46,10 @@ export const ServiceForm = ({data} : ServiceFormProps) => {
           placeholder="Sube la imagen..."
           name="image"
         />
-        <Input type="hidden" name="imageUrl" defaultValue={data?.image}/>
+        <Input type="hidden" name="imageUrl" defaultValue={data?.image} />
       </div>
 
-      <div className="grid grid-cols-4 items-center gap-4">
+      <div className=" gap-4">
         <Label htmlFor="url" className="text-right">
           url
         </Label>

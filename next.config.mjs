@@ -2,14 +2,7 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "img.daisyui.com",
-      },
-      {
-        protocol: "https",
-        hostname: "imase.pe",
-      },
+     
       {
         protocol: "https",
         hostname: "images.unsplash.com",

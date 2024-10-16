@@ -1,16 +1,16 @@
 import { getProductById } from "@/services/api";
-import Heading from "@/components/Heading";
+import { HeadingBanner } from "@/components/HeadingBanner";
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCirclePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const GenerateStaticParam = async ({ params }: { params: { id: string } }) => {
+const ProductsById = async ({ params }: { params: { id: string } }) => {
   const producto = await getProductById(params.id);
   return (
     <>
       <div className="my-10">
-        <Heading>{producto.name}</Heading>
+        <HeadingBanner>{producto.name}</HeadingBanner>
       </div>
       <div className="grid text-center grid-cols-1 sm:grid-cols-2 gap-5 mx-2">
         <div className="gap-4 ">
@@ -38,4 +38,4 @@ const GenerateStaticParam = async ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default GenerateStaticParam;
+export default ProductsById;

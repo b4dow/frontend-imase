@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { APIUrls } from "./urls";
 import { PostProps } from "@/types";
 
@@ -8,9 +8,15 @@ type getProductsProps = {
   pageSize: number;
 };
 
-export const postProduct = async (data: PostProps) => {
-  const response = await axios.post(`${APIUrls.productos.all}`, data);
-  return response.data;
+export const postProduct = async (formData: PostProps) => {
+  try {
+    const { data } = await axios.post(`${APIUrls.productos.all}`, formData);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      return error.response.data;
+    }
+  }
 };
 
 export const getProducts = async ({
@@ -24,22 +30,23 @@ export const getProducts = async ({
       search ? `&name=${search}` : ""
     }`
   );
-  return data.data;
+  return data;
 };
 
 export const getProductsHome = async () => {
   const { data } = await axios(`${APIUrls.productos.all}?limit=3&offset=0`);
-  return data.data;
+  console.log(data);
+  return data;
 };
 
 export const getProductById = async (id: string) => {
   const { data } = await axios(`${APIUrls.productos.all}/${id}`);
-  return data.data;
+  return data;
 };
 
 export const updateProduct = async (id: string, body: PostProps) => {
-  const response = await axios.put(`${APIUrls.productos.all}/${id}`, body);
-  return response.data;
+  const { data } = await axios.put(`${APIUrls.productos.all}/${id}`, body);
+  return data;
 };
 
 export const updateAvailibility = async (id: string) => {
@@ -48,6 +55,6 @@ export const updateAvailibility = async (id: string) => {
 };
 
 export const deleteProduct = async (id: string) => {
-  const response = await axios.delete(`${APIUrls.productos.all}/${id}`);
-  return response.data;
+  const { data } = await axios.delete(`${APIUrls.productos.all}/${id}`);
+  return data;
 };

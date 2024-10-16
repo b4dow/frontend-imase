@@ -25,15 +25,11 @@ export function EditProduct({ product }: EditServiceProps) {
 
   const submitHandler = async (formData: FormData) => {
     const image = formData.get("image") as File;
-    let base64EncodedImage = "";
-    if (image) {
-      base64EncodedImage = (await base64Image(image)) as string;
-    }
-
     const data = {
       name: formData.get("name"),
       description: formData.get("description"),
-      image: image ? base64EncodedImage : formData.get("imageUrl"),
+      image:
+        image.size > 0 ? await base64Image(image) : formData.get("imageUrl"),
       url: formData.get("url"),
     };
 

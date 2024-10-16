@@ -1,9 +1,6 @@
-"use client"
+"use client";
 import { NavbarDashboard } from "../components/NavbarDashboard";
 import { Sidebar } from "../components/Sidebar/";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
 
 export default function AdminLayout({
   children,
@@ -17,11 +14,7 @@ export default function AdminLayout({
       </div>
       <div className="w-full h-full xl:ml-80 ">
         <NavbarDashboard />
-        <div className="p-6 h-max">
-        <QueryClientProvider client={queryClient}>
-          {children}
-          </QueryClientProvider>
-          </div>
+        <div className="p-6 h-max">{children}</div>
       </div>
     </div>
   );

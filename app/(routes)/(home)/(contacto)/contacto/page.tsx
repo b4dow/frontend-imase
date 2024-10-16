@@ -1,10 +1,10 @@
-import Heading from "@/components/Heading";
+import { HeadingBanner } from "@/components/HeadingBanner";
 import { FormContact } from "../components/FormContact";
 
 export default function Contacto() {
   return (
     <>
-      <Heading imageUrl="/banner-contacto.jpg">Contacto</Heading>
+      <HeadingBanner imageUrl="/banner-contacto.jpg">Contacto</HeadingBanner>
       <section className="my-10 grid grid-cols-1 sm:grid-cols-2 gap-20 mx-5">
         <div className="flex flex-col gap-y-4 text-white">
           <div className="bg-red-500 p-5 rounded-2xl ">

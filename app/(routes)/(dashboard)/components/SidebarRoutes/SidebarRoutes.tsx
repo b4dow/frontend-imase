@@ -12,7 +12,7 @@ export function SidebarRoutes() {
           key={item.label}
           href={item.href}
           className={`w-full py-2 ${ 
-            location === item.href ? "bg-red-500 text-white" : ""
+            location === item.href ? "bg-red-500 text-white" : "text-white"
           } `}
         >
           {item.label}
