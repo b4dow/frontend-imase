@@ -63,7 +63,10 @@ export function CreateProduct() {
             <form action={handleForm}>
               <ServiceForm />
               <DialogFooter>
-                <Button type="submit" className="w-full bg-red-500 hover:bg-black/95">
+                <Button
+                  type="submit"
+                  className="w-full bg-red-500 hover:bg-black/95"
+                >
                   Enviar
                 </Button>
               </DialogFooter>

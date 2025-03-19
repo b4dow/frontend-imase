@@ -1,0 +1,15 @@
+.labelForm {
+  @apply text-lg;
+}
+
+.inputForm {
+  @apply w-full outline-none rounded-lg border-black border px-4;
+}
+
+.buttonForm {
+  @apply w-full rounded-lg bg-black text-white py-2 hover:bg-transparent hover:text-black font-semibold hover:border hover:border-black cursor-pointer;
+}
+
+.errorForm {
+  @apply text-red-500 text-sm font-semibold;
+}

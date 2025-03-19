@@ -1,3 +1,6 @@
+import { LoginSchema } from "@/schema";
+import { z } from "zod";
+
 export interface DataProps {
   id: string;
   name: string;
@@ -18,3 +21,5 @@ export interface idParamsProps {
   };
   modal: boolean;
 }
+
+export type LoginT = z.infer<typeof LoginSchema>;

@@ -39,3 +39,10 @@ export const postDataSchema = z.object({
     .trim()
     .min(1, { message: "El campo de la url no puede ir vacia" }),
 });
+
+export const LoginSchema = z.object({
+  email: z.string().min(1, { message: "El campo de email no puede ir vacia" }),
+  password: z
+    .string()
+    .min(8, { message: "El campo de password no puede ir vacia" }),
+});

@@ -56,8 +56,10 @@ export default async function TableProductPage({
     <div>
       <h2 className="text-3xl font-extrabold mb-10">Lista de Productos</h2>
       <CreateProduct />
-      {!productCount  ? (
-        <p className="text-center text-2xl font-black text-black/70">No hay Datos</p>
+      {!productCount ? (
+        <p className="text-center text-2xl font-black text-black/70">
+          No hay Datos
+        </p>
       ) : (
         <>
           <Table>
