@@ -5,9 +5,13 @@ export const APIUrls = {
     all: `${env.API_URL}/productos`,
   },
   servicios: {
-    all: `${env.API_URL}/servicios`
+    all: `${env.API_URL}/servicios`,
   },
   contacto: {
-    all: `${env.API_URL}/contactos`
-  }
+    all: `${env.API_URL}/contactos`,
+  },
+  auth: {
+    user: `${env.API_URL}/auth/user`,
+    login: `${env.API_URL}/auth/login`,
+  },
 };

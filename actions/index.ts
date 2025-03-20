@@ -12,3 +12,5 @@ export * from "./delete-service.action";
 
 //contact
 export * from "./create-contact.action";
+
+export * from "./user.action";
