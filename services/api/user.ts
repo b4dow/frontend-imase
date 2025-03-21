@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 
 interface UserDTO {
   status: number;
-  user: {
+  user?: {
     username: string;
     email: string;
   };
@@ -30,7 +30,9 @@ export const userService = async (): Promise<UserDTO | undefined> => {
     };
   } catch (error) {
     if (isAxiosError(error) && error.response) {
-      console.log(error.response.data);
+      return {
+        status: error.response.status,
+      };
     }
   }
 };
