@@ -14,3 +14,4 @@ export * from "./delete-service.action";
 export * from "./create-contact.action";
 
 export * from "./user.action";
+export * from "./logout.action";
