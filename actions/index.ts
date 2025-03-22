@@ -15,3 +15,4 @@ export * from "./create-contact.action";
 
 export * from "./user.action";
 export * from "./logout.action";
+export * from "./update-availibility.action";

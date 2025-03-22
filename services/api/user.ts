@@ -3,30 +3,20 @@ import axios, { isAxiosError } from "axios";
 import { APIUrls } from "./urls";
 import { cookies } from "next/headers";
 
-interface UserDTO {
-  status: number;
-  user?: {
-    username: string;
-    email: string;
-  };
-}
-
-export const userService = async (): Promise<UserDTO | undefined> => {
+export const userService = async () => {
   try {
     const cookieStore = cookies();
     const getCookie = cookieStore.get("token")?.value;
-    const user = await axios(APIUrls.auth.user, {
+    const { data, status } = await axios(APIUrls.auth.user, {
       headers: {
         Authorization: `Bearer ${getCookie}`,
       },
     });
 
     return {
-      status: user.status,
-      user: {
-        username: user.data.username,
-        email: user.data.email,
-      },
+      username: data.username,
+      email: data.email,
+      status: status,
     };
   } catch (error) {
     if (isAxiosError(error) && error.response) {

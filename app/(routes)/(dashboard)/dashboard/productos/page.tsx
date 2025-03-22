@@ -15,8 +15,7 @@ import { EditProduct } from "./components/editProduct";
 import { DeleteProduct } from "./components/deleteProduct";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { updateAvailibility } from "@/services/api";
-import { revalidatePath } from "next/cache";
+import { productUpdateAvailibilityAction } from "@/actions";
 
 type ProductsPageProps = {
   searchParams: {
@@ -45,13 +44,6 @@ export default async function TableProductPage({
 
   if (page > totalPages) redirect("/dashboard/productos");
 
-  const handleForm = async (formData: FormData) => {
-    "use server";
-    const id = formData.get("id") as string;
-    await updateAvailibility(id);
-    revalidatePath("/dashboard/productos");
-  };
-
   return (
     <div>
       <h2 className="text-3xl font-extrabold mb-10">Lista de Productos</h2>
@@ -77,7 +69,7 @@ export default async function TableProductPage({
                   <TableCell className="font-medium">{product.name}</TableCell>
                   <TableCell className="font-medium">{product.url}</TableCell>
                   <TableCell>
-                    <form action={handleForm}>
+                    <form action={productUpdateAvailibilityAction}>
                       <Input type="hidden" name="id" value={product.id} />
                       <Button
                         type="submit"

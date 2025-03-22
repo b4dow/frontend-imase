@@ -1,27 +1,44 @@
-import Image from "next/image";
-import { SidebarRoutes } from "../SidebarRoutes";
 import Link from "next/link";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import { Logout } from "../Logout/Logout";
+import { SidebarRoutes } from "../SidebarRoutes/SidebarRoutes";
+import { getUser } from "@/actions";
 
-export function Sidebar() {
+export const Sidebar = async () => {
+  const user = await getUser();
+
+  if (user?.status === 401) redirect("/auth/login");
   return (
-    <div>
-      <div className="flex flex-col h-screen   items-center justify-between border-r bg-black/95 ">
-        <div className=" py-10 w-3/4 ">
-          <div className="relative flex items-center justify-center">
-            <Link href="/dashboard">
-              <Image
-                src="/logo-oficial.webp"
-                alt="Logo"
-                width={120}
-                height={50}
-              />
-            </Link>
-          </div>
-          <div className="py-5 text-center">
-            <SidebarRoutes />
-          </div>
+    <div className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
+      <div>
+        <div className="py-4 flex justify-center">
+          <Link href="#">
+            <Image
+              src="/logo-oficial.webp"
+              width={100}
+              height={100}
+              alt="tailus logo"
+            />
+          </Link>
+        </div>
+
+        <div className="mt-4 text-center">
+          <Image
+            src="/cat.webp"
+            width={30}
+            height={30}
+            alt="cat"
+            className=" m-auto rounded-full object-cover w-16 h-16"
+          />
+          <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
+            {user?.username}
+          </h5>
+          <span className="hidden text-gray-400 lg:block">{user?.email}</span>
         </div>
       </div>
+      <SidebarRoutes />
+      <Logout />
     </div>
   );
-}
+};

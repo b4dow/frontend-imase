@@ -1,2 +1,3 @@
 export * from "./Logout/Logout";
-export * from "./Navigation/Navigation";
+export * from "./Sidebar/Sidebar";
+export * from "./NavbarDashboard/NavbarDashboard";
