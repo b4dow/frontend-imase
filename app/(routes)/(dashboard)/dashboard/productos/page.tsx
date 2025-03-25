@@ -13,9 +13,7 @@ import { PaginationPage } from "@/components/PaginationPage";
 import { redirect } from "next/navigation";
 import { EditProduct } from "./components/editProduct";
 import { DeleteProduct } from "./components/deleteProduct";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { productUpdateAvailibilityAction } from "@/actions";
+import { UpdateAvailable } from "@/components/UpdateAvailable";
 
 type ProductsPageProps = {
   searchParams: {
@@ -69,17 +67,7 @@ export default async function TableProductPage({
                   <TableCell className="font-medium">{product.name}</TableCell>
                   <TableCell className="font-medium">{product.url}</TableCell>
                   <TableCell>
-                    <form action={productUpdateAvailibilityAction}>
-                      <Input type="hidden" name="id" value={product.id} />
-                      <Button
-                        type="submit"
-                        className={`cursor-pointer bg-transparent hover:bg-transparent ${
-                          product.available ? "text-black" : "text-red-500"
-                        }`}
-                      >
-                        {product.available ? "Disponible" : "No Disponible"}
-                      </Button>
-                    </form>
+                    <UpdateAvailable {...product} />
                   </TableCell>
                   <TableCell className="flex gap-2">
                     <EditProduct product={product} />
