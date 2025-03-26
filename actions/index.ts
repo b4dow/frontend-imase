@@ -15,4 +15,5 @@ export * from "./create-contact.action";
 
 export * from "./user.action";
 export * from "./logout.action";
-export * from "./update-availibility.action";
+export * from "./product-update-availibility.action";
+export * from "./service-update-availibility.action";

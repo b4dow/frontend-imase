@@ -29,7 +29,7 @@ export const getServices = async ({
   const { data } = await axios(
     `${APIUrls.servicios.all}?limit=${pageSize}&offset=${offset}${
       search ? `&name=${search}` : ""
-    }`
+    }`,
   );
   console.log(data);
   return data;
@@ -53,7 +53,7 @@ export const editService = async (id: string, bodyUpdate: any) => {
   try {
     const response = await axios.put(
       `${APIUrls.servicios.all}/${id}`,
-      bodyUpdate
+      bodyUpdate,
     );
     return response.data;
   } catch (error) {
@@ -61,7 +61,7 @@ export const editService = async (id: string, bodyUpdate: any) => {
   }
 };
 
-export const updateAvailability = async (id: string) => {
+export const serviceUpdateAvailabilityService = async (id: string) => {
   const response = axios.patch(`${APIUrls.servicios.all}/${id}`);
   return response;
 };

@@ -49,7 +49,7 @@ export const updateProduct = async (id: string, body: PostProps) => {
   return data;
 };
 
-export const updateAvailibility = async (id: string) => {
+export const productUpdateAvailibilityService = async (id: string) => {
   const response = await axios.patch(`${APIUrls.productos.all}/${id}`);
   return response.data;
 };

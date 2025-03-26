@@ -67,7 +67,7 @@ export default async function TableProductPage({
                   <TableCell className="font-medium">{product.name}</TableCell>
                   <TableCell className="font-medium">{product.url}</TableCell>
                   <TableCell>
-                    <UpdateAvailable {...product} />
+                    <UpdateAvailable {...product} title="product" />
                   </TableCell>
                   <TableCell className="flex gap-2">
                     <EditProduct product={product} />

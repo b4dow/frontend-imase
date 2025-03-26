@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { updateAvailability } from "@/services/api";
 import { revalidatePath } from "next/cache";
 import { Input } from "@/components/ui/input";
+import { UpdateAvailable } from "@/components/UpdateAvailable";
 
 type ServicesPageProps = {
   searchParams: {
@@ -47,19 +48,14 @@ export default async function TableServicesPage({
 
   if (page > totalPages) redirect("/dashboard/servicios");
 
-  const handleForm = async (formData: FormData) => {
-    "use server";
-    const id = formData.get("id");
-    await updateAvailability(id as string);
-    revalidatePath("/dashboard/servicios");
-  };
-
   return (
     <div>
       <h2 className="text-3xl font-extrabold mb-10">Lista de Servicios</h2>
       <CreateService />
       {!servicesCount ? (
-        <p className="text-2xl font-black text-center text-black/70">No hay Datos</p>
+        <p className="text-2xl font-black text-center text-black/70">
+          No hay Datos
+        </p>
       ) : (
         <>
           <Table>
@@ -77,17 +73,7 @@ export default async function TableServicesPage({
                   <TableCell className="font-medium">{service.name}</TableCell>
                   <TableCell className="font-medium">{service.url}</TableCell>
                   <TableCell>
-                    <form action={handleForm}>
-                      <Input type="hidden" name="id" value={service.id} />
-                      <Button
-                        type="submit"
-                        className={`cursor-pointer bg-transprent hover:bg-transparent ${
-                          service.available ? "text-black" : "text-red-500"
-                        }`}
-                      >
-                        {service.available ? "Disponible" : "No Disponible"}
-                      </Button>
-                    </form>
+                    <UpdateAvailable {...service} title="service" />
                   </TableCell>
                   <TableCell className="flex gap-2">
                     <EditService service={service} />
