@@ -28,7 +28,7 @@ export const getProducts = async ({
   const { data } = await axios(
     `${APIUrls.productos.all}?limit=${pageSize}&offset=${offset}${
       search ? `&name=${search}` : ""
-    }`
+    }`,
   );
   return data;
 };

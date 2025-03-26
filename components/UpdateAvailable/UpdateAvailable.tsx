@@ -1,8 +1,9 @@
+"use client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { UpdateAvailibilityAction } from "@/actions";
+import { ProductUpdateAvailibilityAction } from "@/actions";
 import { DataProps } from "@/types";
 
 interface Props {
@@ -26,7 +27,7 @@ export const UpdateAvailable = ({ available, id }: Props) => {
   });
 
   const onSubmit = async (values: SubmitProps) => {
-    await UpdateAvailibilityAction(values.id);
+    await ProductUpdateAvailibilityAction(values.id);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

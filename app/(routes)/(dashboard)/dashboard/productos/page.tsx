@@ -32,13 +32,13 @@ export default async function TableProductPage({
 
   if (page < 0) redirect("/dashboard/productos");
 
-  const { products, productCount } = await getProducts({
+  const { products, count } = await getProducts({
     search,
     page,
     pageSize,
   });
 
-  const totalPages = productCount > 0 ? Math.ceil(productCount / pageSize) : 1;
+  const totalPages = count > 0 ? Math.ceil(count / pageSize) : 1;
 
   if (page > totalPages) redirect("/dashboard/productos");
 
@@ -46,7 +46,7 @@ export default async function TableProductPage({
     <div>
       <h2 className="text-3xl font-extrabold mb-10">Lista de Productos</h2>
       <CreateProduct />
-      {!productCount ? (
+      {!count ? (
         <p className="text-center text-2xl font-black text-black/70">
           No hay Datos
         </p>
@@ -55,7 +55,7 @@ export default async function TableProductPage({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">Nombre</TableHead>
+                <TableHead>Nombre</TableHead>
                 <TableHead>Whatsapp</TableHead>
                 <TableHead>Estado</TableHead>
                 <TableHead>Opciones</TableHead>
@@ -77,7 +77,7 @@ export default async function TableProductPage({
               ))}
             </TableBody>
           </Table>
-          {productCount > 0 && (
+          {count > 0 && (
             <PaginationPage
               search={search}
               page={page}
