@@ -1,3 +1,4 @@
+"use client";
 import { z } from "zod";
 
 export const SearchSchema = z.object({
@@ -22,7 +23,8 @@ export const FormSchema = z.object({
     .min(1, { message: "el campo de mensaje no puede ir vacía" }),
 });
 
-export const postDataSchema = z.object({
+export const CreateSchema = z.object({
+  id: z.string().optional(),
   name: z
     .string()
     .trim()
@@ -32,8 +34,16 @@ export const postDataSchema = z.object({
     .trim()
     .min(1, { message: "El campo de la descripción no puede ir vacia" }),
   image: z
-    .string()
-    .min(1, { message: "El campo de la imagen no puede ir vacia" }),
+    .any()
+    .refine(
+      (value) =>
+        value instanceof FileList &&
+        value.length > 0 &&
+        value[0] instanceof File,
+      {
+        message: "se requiere seleccionar una imagen",
+      },
+    ),
   url: z
     .string()
     .trim()

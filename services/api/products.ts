@@ -1,6 +1,8 @@
+"use server";
+import { cookies } from "next/headers";
 import axios, { isAxiosError } from "axios";
 import { APIUrls } from "./urls";
-import { PostProps } from "@/types";
+import { CreateT } from "@/types";
 
 type getProductsProps = {
   search?: string;
@@ -8,12 +10,18 @@ type getProductsProps = {
   pageSize: number;
 };
 
-export const postProduct = async (formData: PostProps) => {
+export const postProduct = async (values: CreateT) => {
+  const cookieStore = cookies();
   try {
-    const { data } = await axios.post(`${APIUrls.productos.all}`, formData);
+    const { data } = await axios.post(`${APIUrls.productos.all}`, values, {
+      headers: {
+        authorization: `Bearer ${cookieStore.get("token")?.value}`,
+      },
+    });
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
+      console.log(error.response.data);
       return error.response.data;
     }
   }
