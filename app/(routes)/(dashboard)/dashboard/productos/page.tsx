@@ -1,5 +1,3 @@
-import { getProducts } from "@/services/api";
-import { DataProps } from "@/types";
 import {
   Table,
   TableBody,
@@ -8,12 +6,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CreateProduct } from "./components/createProduct";
+import Link from "next/link";
 import { PaginationPage } from "@/components/PaginationPage";
 import { redirect } from "next/navigation";
-import { EditProduct } from "./components/editProduct";
-import { DeleteProduct } from "./components/deleteProduct";
+import { DeleteProduct } from "./components/DeleteProduct";
 import { UpdateAvailable } from "@/components/UpdateAvailable";
+import { Button } from "@/components/ui/button";
+import { getProducts } from "@/services/api";
+import { DataProps } from "@/types";
 
 type ProductsPageProps = {
   searchParams: {
@@ -45,7 +45,9 @@ export default async function TableProductPage({
   return (
     <div>
       <h2 className="text-3xl font-extrabold mb-10">Lista de Productos</h2>
-      <CreateProduct />
+      <Link href={`/dashboard/productos/nuevo`}>
+        <Button className="bg-red-500 mb-5">Nuevo Producto</Button>
+      </Link>
       {!count ? (
         <p className="text-center text-2xl font-black text-black/70">
           No hay Datos
@@ -70,7 +72,9 @@ export default async function TableProductPage({
                     <UpdateAvailable {...product} title="product" />
                   </TableCell>
                   <TableCell className="flex gap-2">
-                    <EditProduct product={product} />
+                    <Link href={`/dashboard/productos/editar/${product.id}`}>
+                      <Button>Actualizar</Button>
+                    </Link>
                     <DeleteProduct id={product.id} />
                   </TableCell>
                 </TableRow>

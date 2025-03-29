@@ -1,4 +1,4 @@
-import { CreateSchema, LoginSchema } from "@/schema";
+import { CreateSchema, LoginSchema, UpdateSchema } from "@/schema";
 import { z } from "zod";
 
 export interface DataProps {
@@ -6,6 +6,7 @@ export interface DataProps {
   name: string;
   description: string;
   image: string;
+  public_id: string;
   url: string;
   available: boolean;
 }
@@ -20,3 +21,4 @@ export interface idParamsProps {
 export type LoginT = z.infer<typeof LoginSchema>;
 
 export type CreateT = z.infer<typeof CreateSchema>;
+export type UpdateT = z.infer<typeof UpdateSchema>;

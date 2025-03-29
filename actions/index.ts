@@ -1,6 +1,6 @@
 //products
 export * from "./search-product.action";
-export * from "./create-product.action";
+export * from "./create-update-product.action";
 export * from "./edit-product.action";
 export * from "./delete-product.action";
 

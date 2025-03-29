@@ -52,9 +52,21 @@ export const getProductById = async (id: string) => {
   return data;
 };
 
-export const updateProduct = async (id: string, body: PostProps) => {
-  const { data } = await axios.put(`${APIUrls.productos.all}/${id}`, body);
-  return data;
+export const updateProduct = async (id: string, body: CreateT) => {
+  const cookieStore = cookies();
+  try {
+    const { data } = await axios.put(`${APIUrls.productos.all}/${id}`, body, {
+      headers: {
+        authorization: `Bearer ${cookieStore.get("token")?.value}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      console.log(error.response.data);
+      return error.response.data;
+    }
+  }
 };
 
 export const productUpdateAvailibilityService = async (id: string) => {

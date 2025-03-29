@@ -1,37 +1,36 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import { SubmitHandler, useForm } from "react-hook-form";
-import { CreateT, DataProps } from "@/types";
-import { Button } from "../ui/button";
-import { CreateSchema } from "@/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { CreateT, DataProps, UpdateT } from "@/types";
+import { UpdateSchema } from "@/schema";
 import { FormInput } from "@/components/CustomInput/";
 import { CreateOrUpdateProductAction } from "@/actions";
+import { Button } from "@/components/ui/button";
 
 interface Props {
-  data: DataProps;
+  product: DataProps;
 }
 
-export const ServiceForm = ({ data }: Props) => {
+export const UpdateServiceForm = ({ product }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateT>({
-    resolver: zodResolver(CreateSchema),
+  } = useForm<UpdateT>({
+    resolver: zodResolver(UpdateSchema),
     defaultValues: {
-      ...data,
+      ...product,
       image: undefined,
     },
   });
 
-  const onSubmit: SubmitHandler<CreateT> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateT> = async (data) => {
     const formData = new FormData();
+    console.log(data);
 
     const { image, ...productToSave } = data;
-
-    if (productToSave.id) {
-      formData.append("id", productToSave.id);
-    }
 
     formData.append("name", productToSave.name);
     formData.append("description", productToSave.description);
@@ -43,12 +42,16 @@ export const ServiceForm = ({ data }: Props) => {
       }
     }
 
-    const { ok } = await CreateOrUpdateProductAction(formData);
-    console.log({ ok });
+    await CreateOrUpdateProductAction({
+      formData,
+      imageSrc: product.image,
+      public_id: product.public_id,
+      id: product.id,
+    });
   };
 
   return (
-    <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="w-[60%] mx-auto grid grid-cols-1 gap-4 py-4">
         <FormInput
           name="name"
@@ -65,6 +68,16 @@ export const ServiceForm = ({ data }: Props) => {
           error={errors.image}
           accept="image/png image/jpeg"
         />
+        {product?.image && (
+          <Image
+            src={product.image}
+            alt={product.name}
+            width={200}
+            height={200}
+            unoptimized
+          />
+        )}
+
         <FormInput
           name="description"
           register={register}
@@ -79,8 +92,9 @@ export const ServiceForm = ({ data }: Props) => {
           type="text"
           error={errors.url}
         />
+
         <Button type="submit" className="w-[40%] mx-auto mt-6">
-          Crear
+          Actualizar
         </Button>
       </div>
     </form>

@@ -24,7 +24,6 @@ export const FormSchema = z.object({
 });
 
 export const CreateSchema = z.object({
-  id: z.string().optional(),
   name: z
     .string()
     .trim()
@@ -41,9 +40,25 @@ export const CreateSchema = z.object({
         value.length > 0 &&
         value[0] instanceof File,
       {
-        message: "se requiere seleccionar una imagen",
+        message: "se requiere seleccionar una imagen válida",
       },
     ),
+  url: z
+    .string()
+    .trim()
+    .min(1, { message: "El campo de la url no puede ir vacia" }),
+});
+
+export const UpdateSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(1, { message: "El campo del nombre no puede ir vacia" }),
+  description: z
+    .string()
+    .trim()
+    .min(1, { message: "El campo de la descripción no puede ir vacia" }),
+  image: z.custom((value) => value instanceof FileList),
   url: z
     .string()
     .trim()
