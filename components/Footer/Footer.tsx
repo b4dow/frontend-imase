@@ -3,35 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const FooterNav = [
-  {
-    id: 1,
-    name: "Sobre Nosotros",
-    href: "/nosotros",
-  },
-  {
-    id: 2,
-    name: "Servicios",
-    href: "/servicios",
-  },
-  {
-    id: 3,
-    name: "Productos",
-    href: "/productos",
-  },
-  {
-    id: 4,
-    name: "Contacto",
-    href: "/contacto",
-  },
-];
+import { FooterData } from "./Footer.data";
 
 export const Footer = () => {
   const year = new Date();
   const pathname = usePathname();
   return (
-    <footer className="bg-black/95 ">
+    <footer className="bg-black/95  ">
       <div className="py-3">
         <div className="flex flex-col justify-center items-center  w-full mx-auto">
           <Image
@@ -42,7 +20,7 @@ export const Footer = () => {
           />
         </div>
         <nav className="flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-x-20 mb-5 md:mb-2 py-5 text-lg">
-          {FooterNav.map((item) => (
+          {FooterData.map((item) => (
             <Link
               key={item.id}
               href={item.href}
@@ -57,11 +35,11 @@ export const Footer = () => {
       </div>
       <div className=" py-5">
         <div className="w-full">
-          <div className="flex justify-evenly items-center gap-3 w-full">
+          <div className="flex justify-center items-center gap-8 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               viewBox="0 0 512 512"
               className="cursor-pointer"
             >
@@ -72,8 +50,8 @@ export const Footer = () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               viewBox="0 0 448 512"
               className="cursor-pointer"
             >
@@ -84,8 +62,8 @@ export const Footer = () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               viewBox="0 0 450 512"
               className="cursor-pointer"
             >

@@ -1,5 +1,5 @@
 import { Footer } from "@/components/Footer";
-import { NavbarList } from "@/components/NavbarList/";
+import { NavbarList } from "@/components/Navbar/NavbarList/";
 
 export default function HomeLayout({
   children,
@@ -9,7 +9,7 @@ export default function HomeLayout({
   return (
     <>
       <NavbarList />
-      <main className=" mx-auto container my-10">{children}</main>
+      <main className="  my-10">{children}</main>
       <Footer />
     </>
   );

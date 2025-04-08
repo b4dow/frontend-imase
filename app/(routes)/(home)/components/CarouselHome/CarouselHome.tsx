@@ -25,9 +25,9 @@ export function CarouselHome() {
                 priority
                 className="object-cover"
               />
-              <Card className="absolute bg-black/40 w-full border-none ">
+              <Card className="absolute bg-black/40  w-full h-full border-none ">
                 <CardContent className="flex flex-col gap-5 aspect-square items-center justify-center p-6">
-                  <span className="text-3xl text-center text-white font-semibold">
+                  <span className=" text-xl md:text-3xl text-center text-white font-semibold">
                     {item.label}
                   </span>
                   <Link href={`/contacto`}>

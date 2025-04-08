@@ -3,11 +3,13 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import { CreateT, DataProps, UpdateT } from "@/types";
+import { DataProps, UpdateT } from "@/types";
 import { UpdateSchema } from "@/schema";
 import { FormInput } from "@/components/CustomInput/";
+import { FormTextArea } from "@/components/CustomTextArea/";
 import { CreateOrUpdateProductAction } from "@/actions";
 import { Button } from "@/components/ui/button";
+import { deleteImageAction } from "@/actions/delete-image.action";
 
 interface Props {
   product: DataProps;
@@ -69,22 +71,29 @@ export const UpdateServiceForm = ({ product }: Props) => {
           accept="image/png image/jpeg"
         />
         {product?.image && (
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={200}
-            height={200}
-            unoptimized
-          />
+          <div className="relative h-52 w-44 rounded-lg overflow-hidden">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              unoptimized
+              className="absolute cover"
+            />
+            <div className="absolute bottom-0  left-0 right-0 bg-red-600 hover:bg-red-500 cursor-pointer text-center ">
+              <span onClick={() => deleteImageAction(product.id)}>
+                Eliminar
+              </span>
+            </div>
+          </div>
         )}
 
-        <FormInput
+        <FormTextArea
           name="description"
           register={register}
           label="Descripción"
-          type="text"
           error={errors.description}
         />
+
         <FormInput
           name="url"
           register={register}

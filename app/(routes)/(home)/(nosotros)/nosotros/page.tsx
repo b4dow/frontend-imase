@@ -1,11 +1,26 @@
+"use client";
+import { useEffect } from "react";
 import Image from "next/image";
 import { CarouselAbout } from "../components/CarouselAbout/";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Nosotros() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
   return (
     <>
       <CarouselAbout />
-      <section className="container flex  mx-auto flex-col sm:flex-row justify-between items-center my-20">
+      <section
+        data-aos="fade-up"
+        className="container flex  mx-auto flex-col sm:flex-row justify-between items-center my-20"
+      >
         <div className="sm:w-1/2 mb-10 sm:mb-0">
           <p className="font-medium text-lg">
             Somos una empresa fundada en el año 1987, contamos con más de 30
@@ -22,8 +37,8 @@ export default function Nosotros() {
           />
         </div>
       </section>
-      <section className="">
-        <div className="container flex flex-col sm:flex-row gap-6 justify-between items-center mx-auto py-10 ">
+      <section data-aos="fade-up" className="my-20">
+        <div className="container flex flex-col sm:flex-row gap-6 justify-between items-center mx-auto">
           <div className="relative w-full md:w-2/5 h-96">
             <Image
               className=" object-cover rounded-xl"
@@ -46,6 +61,12 @@ export default function Nosotros() {
           </div>
         </div>
       </section>
+      {/* <section className="my-20"> */}
+      {/*   <h2 className="text-4xl text-center text-red-500 font-semibold"> */}
+      {/*     Proyectos */}
+      {/*   </h2> */}
+      {/*   <div></div> */}
+      {/* </section> */}
     </>
   );
 }

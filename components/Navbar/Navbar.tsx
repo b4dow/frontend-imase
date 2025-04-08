@@ -4,55 +4,24 @@ import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
-
-const dataNavbar = [
-  {
-    id: 1,
-    name: "Inicio",
-    href: "/",
-  },
-  {
-    id: 2,
-    name: "Servicios",
-    href: "/servicios",
-  },
-  {
-    id: 3,
-    name: "Productos",
-    href: "/productos",
-  },
-  {
-    id: 4,
-    name: "Contacto",
-    href: "/contacto",
-  },
-];
+import { dataNavbar } from "./navbar.data";
 
 export function Navbar() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="flex gap-6">
           {dataNavbar.map((item) => (
             <Link
-              key={item.id}
               href={item.href}
-              legacyBehavior
-              passHref
-              className={`${pathname ? "text-red-500" : ""}`}
+              key={item.id}
+              className={`${pathname === item.href ? "text-red-500" : "text-white"} hover:text-red-500 text-lg`}
             >
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent active:bg-transparent hover:text-red-500 active:text-red-500 text-white text-lg font-bold `}
-              >
-                {item.name}
-              </NavigationMenuLink>
+              {item.name}
             </Link>
           ))}
         </NavigationMenuItem>

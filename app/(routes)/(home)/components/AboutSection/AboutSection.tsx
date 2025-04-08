@@ -1,10 +1,22 @@
+"use client";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export function AboutSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
   return (
-    <section className="container py-10 my-10  mx-auto ">
+    <section data-aos="fade-up" className="container py-20 my-10  mx-auto ">
       <div className="text-center sm:text-start sm:flex justify-around items-center">
         <div className="mx-5 sm:w-72 mb-10">
           <h2>
@@ -18,7 +30,7 @@ export function AboutSection() {
             <Button className="mt-5">Ver mas detalles</Button>
           </Link>
         </div>
-        <div className="w-96 h-96 rounded-2xl relative overflow-hidden">
+        <div className="w-full h-52 md:w-96 md:h-96 rounded-2xl relative overflow-hidden">
           <Image
             src="/image-about-section-second.png"
             alt="Image about section"

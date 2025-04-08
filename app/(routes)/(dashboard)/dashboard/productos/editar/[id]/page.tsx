@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { UpdateServiceForm } from "../../components/ServicesForm/";
 import { getProductById } from "@/services/api";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   params: {
@@ -11,6 +13,9 @@ const UpdateProductPage = async ({ params }: Props) => {
   const product = await getProductById(id);
   return (
     <>
+      <Link href="/dashboard/productos">
+        <Button>Volver</Button>
+      </Link>
       <h1 className="text-2xl text-center font-semibold">
         Actualizar Producto
       </h1>

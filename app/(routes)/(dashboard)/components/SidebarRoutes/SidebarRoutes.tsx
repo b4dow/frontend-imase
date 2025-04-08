@@ -48,8 +48,7 @@ export const SidebarRoutes = () => {
                 "relative px-4 py-3 flex items-center space-x-4 rounded-xl text-black",
 
                 {
-                  "text-white bg-gradient-to-r from-red-600 to-gray-400":
-                    pathname === item.link,
+                  "text-white bg-red-500": pathname === item.link,
                 },
               )}
             >

@@ -3,6 +3,7 @@ export * from "./search-product.action";
 export * from "./create-update-product.action";
 export * from "./edit-product.action";
 export * from "./delete-product.action";
+export * from "./delete-image.action";
 
 //services
 export * from "./search-service.action";
