@@ -26,7 +26,7 @@ export function CarouselHome() {
                 className="object-cover"
               />
               <Card className="absolute bg-black/40  w-full h-full border-none ">
-                <CardContent className="flex flex-col gap-5 aspect-square items-center justify-center p-6">
+                <CardContent className="w-full h-full flex flex-col gap-5 aspect-square items-center justify-center p-6">
                   <span className=" text-xl md:text-3xl text-center text-white font-semibold">
                     {item.label}
                   </span>

@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {HeadingBanner} from "@/components/HeadingBanner";
+import { HeadingBanner } from "@/components/HeadingBanner";
 import CardServices from "../components/CardServices";
 import { getServices } from "@/services/api";
-import { SearchServicePage } from "../components/SearchServicePage";
+import { Search } from "@/components/Search/Search";
 import { Button } from "@/components/ui/button";
 import { SkeletonServices } from "../../../../../components/SkeletonHome/SkeletonServices";
 import { PaginationPage } from "@/components/PaginationPage";
@@ -32,15 +32,21 @@ export default async function ServicePage({ searchParams }: ServicePageProps) {
   if (page > totalPages) redirect("/servicios");
 
   return (
-    <>
+    <section className="container mx-auto">
       {search ? (
-        <HeadingBanner imageUrl="/banner-products.jpeg">Búsqueda</HeadingBanner>
+        <Suspense fallback={<p>Cargando...</p>}>
+          <HeadingBanner imageUrl="/banner-products.jpeg">
+            Búsqueda
+          </HeadingBanner>
+        </Suspense>
       ) : (
-        <HeadingBanner imageUrl="/banner-products.jpeg">Servicios</HeadingBanner>
+        <HeadingBanner imageUrl="/banner-products.jpeg">
+          Servicios
+        </HeadingBanner>
       )}
-      <div className="flex items-center ">
+      <div className="flex justify-between items-center ">
         <Suspense fallback={<SkeletonServices />}>
-          <SearchServicePage placeholder="Buscar..." />
+          <Search placeholder="Buscar..." action="servicio" />
         </Suspense>
         {search && (
           <div className="btn rounded-none  bg-red-500 text-white">
@@ -50,7 +56,6 @@ export default async function ServicePage({ searchParams }: ServicePageProps) {
           </div>
         )}
       </div>
-
       <Suspense fallback={<SkeletonServices />}>
         <CardServices services={services} />
       </Suspense>
@@ -62,6 +67,6 @@ export default async function ServicePage({ searchParams }: ServicePageProps) {
           url="servicios"
         />
       )}
-    </>
+    </section>
   );
 }

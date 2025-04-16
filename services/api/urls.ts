@@ -8,7 +8,7 @@ export const APIUrls = {
     all: `${env.API_URL}/servicios`,
   },
   contacto: {
-    all: `${env.API_URL}/contactos`,
+    all: `${env.API_URL}/contacto`,
   },
   auth: {
     user: `${env.API_URL}/auth/user`,

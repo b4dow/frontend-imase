@@ -1,12 +1,18 @@
 "use server";
 
 import { ContactService } from "@/services/api";
+import { SubmitContactI } from "@/types";
 
-export const createContactAction = async (data: any) => {
-  try {
-    const response = await ContactService(data);
-    return response
-  } catch (error) {
-    console.log(error);
+export const CreateContactAction = async (data: SubmitContactI) => {
+  const result = await ContactService(data);
+  if (result?.status !== 200) {
+    return {
+      ok: false,
+      message: result?.message,
+    };
   }
+  return {
+    ok: true,
+    message: result.message,
+  };
 };

@@ -1,23 +1,16 @@
 "use client";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { Transition } from "@/components/Transition/Transition";
 
-export function AboutSection() {
-  useEffect(() => {
-    AOS.init({
-      duration: 3000,
-      easing: "ease-in-out",
-      once: false,
-    });
-  }, []);
-
+export const AboutSection = () => {
   return (
-    <section data-aos="fade-up" className="container py-20 my-10  mx-auto ">
-      <div className="text-center sm:text-start sm:flex justify-around items-center">
+    <section className="container py-20 my-10  mx-auto ">
+      <Transition
+        position="right"
+        className="text-center sm:text-start sm:flex justify-around items-center"
+      >
         <div className="mx-5 sm:w-72 mb-10">
           <h2>
             Apuntamos a ser la mejor opción para el cliente que requiere de un
@@ -39,7 +32,7 @@ export function AboutSection() {
             className="object-cover"
           />
         </div>
-      </div>
+      </Transition>
     </section>
   );
-}
+};

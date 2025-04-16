@@ -19,7 +19,7 @@ export const Footer = () => {
             height={100}
           />
         </div>
-        <nav className="flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-x-20 mb-5 md:mb-2 py-5 text-lg">
+        <nav className="flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-x-20 my-4 md:mt-2 md:mb-0 text-lg">
           {FooterData.map((item) => (
             <Link
               key={item.id}
@@ -33,7 +33,7 @@ export const Footer = () => {
           ))}
         </nav>
       </div>
-      <div className=" py-5">
+      <div className="py-0 md:py-5">
         <div className="w-full">
           <div className="flex justify-center items-center gap-8 w-full">
             <svg
@@ -74,7 +74,7 @@ export const Footer = () => {
             </svg>
           </div>
         </div>
-        <p className="text-center font-light pt-5 text-lg text-white">
+        <p className="text-center font-light pt-5 text-lg text-white w-96 md:w-full mx-auto">
           © {year.getFullYear()} - Todos los derechos reservados - creado por{" "}
           <a
             href="https://google.com"

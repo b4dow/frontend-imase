@@ -1,4 +1,9 @@
-import { CreateSchema, LoginSchema, UpdateSchema } from "@/schema";
+import {
+  CreateSchema,
+  LoginSchema,
+  UpdateSchema,
+  SearchSchema,
+} from "@/schema";
 import { z } from "zod";
 
 export interface DataProps {
@@ -18,7 +23,15 @@ export interface idParamsProps {
   modal: boolean;
 }
 
+export interface SubmitContactI {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export type LoginT = z.infer<typeof LoginSchema>;
 
 export type CreateT = z.infer<typeof CreateSchema>;
 export type UpdateT = z.infer<typeof UpdateSchema>;
+
+export type SearchT = z.infer<typeof SearchSchema>;

@@ -8,6 +8,7 @@ import CardProducts from "../components/CardProducts";
 import { SkeletonCards } from "@/components/SkeletonHome";
 import { PaginationPage } from "@/components/PaginationPage";
 import { Button } from "@/components/ui/button";
+import { Search } from "@/components/Search/Search";
 
 type ProductsProps = {
   searchParams: {
@@ -32,16 +33,16 @@ export default async function ProductPage({ searchParams }: ProductsProps) {
   if (page > totalPages) redirect("/productos");
 
   return (
-    <>
+    <section className="container mx-auto">
       {search ? (
-        <HeadingBanner  imageUrl="/banner-products.jpeg">Búsqueda</HeadingBanner>
+        <HeadingBanner imageUrl="/banner-products.jpeg">Búsqueda</HeadingBanner>
       ) : (
         <HeadingBanner imageUrl="/banner-products.jpeg">
           Productos
         </HeadingBanner>
       )}
       <div className="flex justify-between items-center ">
-        <SearchProductPage placeholder="Buscar..." />
+        <Search placeholder="Buscar..." action="producto" />
         {search && (
           <Link href="/productos">
             <Button className="bg-red-500">Volver</Button>
@@ -60,6 +61,6 @@ export default async function ProductPage({ searchParams }: ProductsProps) {
           url="productos"
         />
       )}
-    </>
+    </section>
   );
 }

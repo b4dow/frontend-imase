@@ -7,7 +7,7 @@ type HeadingBannerProps = {
 
 export const HeadingBanner = ({ children, imageUrl }: HeadingBannerProps) => {
   return (
-    <div className="relative bg-black h-[40vh] rounded-3xl overflow-hidden flex items-center justify-center mx-auto my-5 max-w-6xl">
+    <div className="relative bg-black h-[40vh] rounded-3xl overflow-hidden">
       <Image
         src={`${
           !imageUrl
