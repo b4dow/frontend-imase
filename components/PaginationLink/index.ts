@@ -1,1 +1,0 @@
-export { PaginationLink } from "./PaginationLink";

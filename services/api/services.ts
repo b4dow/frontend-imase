@@ -20,7 +20,7 @@ export const postService = async (formData: PostProps) => {
   }
 };
 
-export const getServices = async ({
+export const GetServices = async ({
   search,
   page,
   pageSize,
@@ -35,7 +35,7 @@ export const getServices = async ({
   return data;
 };
 
-export const getServicesHome = async () => {
+export const GetServiceHome = async () => {
   try {
     const { data } = await axios(`${APIUrls.servicios.all}?limit=3&offset=0`);
     return data;

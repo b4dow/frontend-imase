@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import Link from "next/link";
 
 type PaginationLinkProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 } & React.ComponentProps<typeof Link>;
 
 export const PaginationLink = ({ children, href }: PaginationLinkProps) => (

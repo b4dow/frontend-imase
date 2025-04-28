@@ -41,7 +41,7 @@ export const getProducts = async ({
   return data;
 };
 
-export const getProductsHome = async () => {
+export const GetProductsHome = async () => {
   const { data } = await axios(`${APIUrls.productos.all}?limit=3&offset=0`);
   console.log(data);
   return data;

@@ -1,1 +1,0 @@
-export { ServicesHome } from "./ServicesHome";

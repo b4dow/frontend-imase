@@ -1,15 +1,12 @@
-import { AboutSection } from "./components/AboutSection";
-import { CarouselHome } from "./components/CarouselHome";
-import { ProductSection } from "./components/ProductSection";
-import { ServiceSection } from "./components/ServiceSection";
+import { Carousel, About, Service, Product } from "@/components";
 
 export default function HomePage() {
   return (
     <>
-      <CarouselHome />
-      <AboutSection />
-      <ServiceSection />
-      <ProductSection />
+      <Carousel />
+      <About />
+      <Service />
+      <Product />
     </>
   );
 }
