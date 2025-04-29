@@ -8,6 +8,7 @@ import { FooterData } from "./Footer.data";
 export const Footer = () => {
   const year = new Date();
   const pathname = usePathname();
+
   return (
     <footer className="bg-black/95 pt-10">
       <div className="py-3">

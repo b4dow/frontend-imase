@@ -3,12 +3,12 @@ import { IoChevronForwardOutline, IoChevronBackOutline } from "react-icons/io5";
 
 export const Pagination = () => {
   return (
-    <div className="mb-32">
+    <div className="mb-32 flex items-center justify-center">
       <nav>
         <ul className="flex">
           <li>
             <button className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300">
-              <IoChevronForwardOutline size={30} />
+              <IoChevronBackOutline size={30} />
             </button>
           </li>
           <li>
@@ -40,7 +40,7 @@ export const Pagination = () => {
               className="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
               aria-label="Next"
             >
-              <IoChevronBackOutline size={30} />
+              <IoChevronForwardOutline size={30} />
             </button>
           </li>
         </ul>

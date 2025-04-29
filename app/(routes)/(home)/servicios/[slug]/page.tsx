@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GetService } from "@/actions";
 import { TitleImage } from "@/components";
+import { BreadCrumb } from "@/components/ui/breadcrumb/BreadCrumb";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,6 +18,7 @@ const ServiceById = async ({ params }: Props) => {
   return (
     <>
       <TitleImage urlImage="/home/1.jpg">{service.name}</TitleImage>
+      <BreadCrumb />
       <div className="md:container mx-auto grid text-center grid-cols-1 sm:grid-cols-2 gap-5 my-10 ">
         <Image
           className="h-auto w-full max-w-full rounded-lg  object-cover md:h-[300px]"

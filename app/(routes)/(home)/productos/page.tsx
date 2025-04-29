@@ -1,10 +1,19 @@
-import { GetProducts } from "@/actions";
+import { GetProducts, GetProductsByName } from "@/actions";
 import { TitleImage, Search, CardGrid, Pagination } from "@/components";
+import { Product } from "@/interface";
 
-export default async function ProductPage() {
+interface Props {
+  searchParams: Promise<{ search: string }>;
+}
+
+export default async function ProductPage({ searchParams }: Props) {
+  const { search } = await searchParams;
+
   const products = await GetProducts();
 
-  if (!products) return;
+  const productsByName = await GetProductsByName(search);
+
+  if (!products?.length) return;
 
   return (
     <>
@@ -12,7 +21,14 @@ export default async function ProductPage() {
       <div className="md:container mx-auto">
         <Search />
 
-        <CardGrid data={products} title="productos" />
+        {search ? (
+          <CardGrid<Product>
+            data={productsByName as Product[]}
+            title="productos"
+          />
+        ) : (
+          <CardGrid<Product> data={products} title="productos" />
+        )}
         <Pagination />
       </div>
     </>

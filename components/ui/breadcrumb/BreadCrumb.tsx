@@ -2,7 +2,7 @@ export const BreadCrumb = () => {
   return (
     <>
       <nav
-        className="flex bg-gray-50 text-gray-700 border border-gray-200 py-3 px-5 rounded-lg dark:bg-gray-800 dark:border-gray-700"
+        className="flex text-gray-700 py-3 px-5 rounded-lg "
         aria-label="Breadcrumb"
       >
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
