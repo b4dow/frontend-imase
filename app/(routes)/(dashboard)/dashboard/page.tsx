@@ -1,9 +1,9 @@
-export default function Page() {
+const Dashboard = async () => {
   return (
     <>
-      <h2 className="text-center text-2xl font-bold">
-        Bienvenido a tu administador de servicios y productos
-      </h2>
+      <h1>Haz ingresado al sistema de acceso a la plataforma</h1>
     </>
   );
-}
+};
+
+export default Dashboard;

@@ -5,7 +5,7 @@ import { FadeIn } from "@/utils/motion.transition";
 
 interface Props {
   children: ReactNode;
-  className: string;
+  className?: string;
   position: "bottom" | "right" | "left";
 }
 

@@ -1,19 +1,27 @@
-import { NavbarDashboard, Sidebar } from "../components";
+import { ReactNode } from "react";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
+import { Sidebar } from "@/components";
 
-export default async function Layout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <>
-      <Sidebar />
-
-      <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-        <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
-          <NavbarDashboard />
-        </div>
-
-        <div className="px-6 pt-6 2xl:container">{children}</div>
-      </div>
-    </>
-  );
+interface Props {
+  children: ReactNode;
 }
+
+const LayoutDashboard = async ({ children }: Props) => {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error || !data.user) {
+    redirect("/auth/login");
+  }
+
+  return (
+    <div className="flex flex-row w-full h-screen">
+      <Sidebar />
+      <div className="w-full p-10 ">{children}</div>
+    </div>
+  );
+};
+
+export default LayoutDashboard;

@@ -1,1 +1,0 @@
-export { DeleteProduct } from "./DeleteProduct";

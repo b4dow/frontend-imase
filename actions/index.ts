@@ -7,3 +7,5 @@ export * from "./product/get-featured-products";
 export * from "./product/get-products";
 export * from "./product/get-produts-by-name";
 export * from "./product/get-product";
+
+export * from "./auth/login-with-email.action";

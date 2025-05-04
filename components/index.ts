@@ -7,6 +7,7 @@ export * from "./ui/title-image/TitleImage";
 export * from "./ui/pagination/Pagination";
 export * from "./ui/search/Search";
 export * from "./ui/footer/Footer";
+export * from "./ui/alert/Alert";
 
 // Home
 export * from "./home/carousel/Carousel";
@@ -19,3 +20,11 @@ export * from "./home/product/Product";
 export * from "./contact/form/Form";
 export * from "./contact/info/Info";
 export * from "./contact/google-maps/GoogleMaps";
+
+export * from "./auth/form-login/FormLogin";
+
+// Custom
+export * from "./custom-input/CustomInput";
+
+// Dashboard
+export * from "./dashboard/sidebar/Sidebar";

@@ -65,9 +65,11 @@ export const UpdateSchema = z.object({
     .min(1, { message: "El campo de la url no puede ir vacia" }),
 });
 
-export const LoginSchema = z.object({
-  email: z.string().min(1, { message: "El campo de email no puede ir vacia" }),
+export const SchemaLoginForm = z.object({
+  email: z
+    .string({ message: "Correo electrónico inválido" })
+    .email("Correo electrónico inválido"),
   password: z
     .string()
-    .min(8, { message: "El campo de password no puede ir vacia" }),
+    .min(6, { message: "La contraseña debe tener al menos 6 caracteres" }),
 });

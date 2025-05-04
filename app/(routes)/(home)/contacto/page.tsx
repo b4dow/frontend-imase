@@ -13,6 +13,7 @@ export default function Contacto() {
               value="Jr. Atanacio Catojeras 115 - 1er piso Urb. Almirante Miguel Grau-
               SMP"
             />
+
             <Info title="Correo" value="ventas@imase.pe" />
           </div>
           <Form />
