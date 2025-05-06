@@ -8,7 +8,7 @@ export default function HomeLayout({
   return (
     <>
       <Navbar />
-      <main className="min-h-screen ">{children}</main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
     </>
   );

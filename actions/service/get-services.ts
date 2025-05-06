@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/utils";
 
 export const GetServices = async () => {
   try {
@@ -10,6 +10,7 @@ export const GetServices = async () => {
       .from("services")
       .select("*, image(url)");
 
+    console.log(services);
     return services;
   } catch (error) {
     console.log(error);

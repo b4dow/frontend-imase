@@ -1,6 +1,7 @@
-import { GetProducts, GetProductsByName } from "@/actions";
+import { GetProducts, GetProductsByName, TotalProducts } from "@/actions";
 import { TitleImage, Search, CardGrid, Pagination } from "@/components";
 import { Product } from "@/interface";
+import { redirect } from "next/navigation";
 
 interface Props {
   searchParams: Promise<{ search: string }>;
@@ -13,7 +14,11 @@ export default async function ProductPage({ searchParams }: Props) {
 
   const productsByName = await GetProductsByName(search);
 
+  const totalPages = await TotalProducts();
+
   if (!products?.length) return;
+
+  if (!totalPages) return;
 
   return (
     <>
@@ -29,7 +34,7 @@ export default async function ProductPage({ searchParams }: Props) {
         ) : (
           <CardGrid<Product> data={products} title="productos" />
         )}
-        <Pagination />
+        <Pagination totalPages={totalPages} />
       </div>
     </>
   );

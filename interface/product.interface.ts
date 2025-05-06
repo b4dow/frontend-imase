@@ -7,6 +7,7 @@ export interface Product {
   };
   slug: string;
   public_id: string;
+  quantity?: number;
   url: string;
   available: boolean;
 }

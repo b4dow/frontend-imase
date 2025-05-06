@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import { motion } from "motion/react";
-import { FadeIn } from "@/utils/motion.transition";
+import { FadeIn } from "@/utils";
 
 interface Props {
   children: ReactNode;

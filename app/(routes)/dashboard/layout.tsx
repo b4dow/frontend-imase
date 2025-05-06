@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { Sidebar } from "@/components";
+import { TopMenu } from "@/components";
 
 interface Props {
   children: ReactNode;
@@ -17,10 +17,10 @@ const LayoutDashboard = async ({ children }: Props) => {
   }
 
   return (
-    <div className="flex flex-row w-full h-screen">
-      <Sidebar />
+    <>
+      <TopMenu email={data.user.email!} />
       <div className="w-full p-10 ">{children}</div>
-    </div>
+    </>
   );
 };
 

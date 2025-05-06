@@ -1,4 +1,5 @@
 "use client";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -8,11 +9,11 @@ import Image from "next/image";
 import { LoginWithEmail } from "@/actions";
 import { Login } from "@/interface";
 import { SchemaLoginForm } from "@/schema";
-import { FormInput, Alert } from "@/components";
-import { useEffect, useState } from "react";
+import { FormInput } from "@/components";
 
 export const FormLogin = () => {
   const router = useRouter();
+
   const {
     control,
     handleSubmit,
@@ -21,30 +22,13 @@ export const FormLogin = () => {
     resolver: zodResolver(SchemaLoginForm),
   });
 
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (open) {
-      const timer = setTimeout(() => {
-        setOpen(false);
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [open]);
-
   const onSubmit: SubmitHandler<Login> = async (values) => {
     const { email, password } = values;
 
-    const result = await LoginWithEmail({
+    await LoginWithEmail({
       email,
       password,
     });
-
-    if (result?.errorMessage) {
-      setOpen(true);
-      return;
-    }
 
     return router.push("/dashboard");
   };

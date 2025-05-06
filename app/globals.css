@@ -8,3 +8,8 @@
 .btn-primary {
   @apply bg-black py-2 px-4 text-white rounded hover:opacity-90 cursor-pointer text-center;
 }
+
+/*Tailwind Elements*/
+.menuItems {
+  @apply hover:text-red-500 z-20;
+}

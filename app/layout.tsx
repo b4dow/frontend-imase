@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { MenuProvider } from "@/context/context.provider";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -18,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={`${outfit.className} antialiased  `}>
-        <MenuProvider>{children}</MenuProvider>
-      </body>
+      <body className={`${outfit.className} antialiased`}>{children}</body>
     </html>
   );
 }

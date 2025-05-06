@@ -1,6 +1,7 @@
 import { CardGrid, TitleImage, Pagination, Search } from "@/components";
-import { GetServices, GetServicesByName } from "@/actions";
+import { GetServices, GetServicesByName, TotalServices } from "@/actions";
 import { Service } from "@/interface";
+import { redirect } from "next/navigation";
 
 interface Props {
   searchParams: Promise<{ search: string }>;
@@ -10,10 +11,13 @@ export default async function ServicePage({ searchParams }: Props) {
   const { search } = await searchParams;
 
   const services = await GetServices();
+  const totalPages = await TotalServices();
 
   const servicesByName = await GetServicesByName(search);
 
-  if (!services?.length) return;
+  if (!services?.length) redirect("/empty");
+
+  if (!totalPages) redirect("/empty");
 
   return (
     <>
@@ -31,7 +35,6 @@ export default async function ServicePage({ searchParams }: Props) {
           <CardGrid<Service> data={services} title="servicios" />
         )}
       </div>
-      <Pagination />
     </>
   );
 }
