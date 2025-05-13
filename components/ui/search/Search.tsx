@@ -1,8 +1,11 @@
 "use client";
 
+import { toast } from "sonner";
 import { IoSearchOutline } from "react-icons/io5";
 import { useState } from "react";
-import { GetProductsByName, GetServicesByName } from "@/actions";
+import { GetServicesByName } from "actions/service";
+import { GetProductsByName } from "actions/product";
+
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 export function Search() {
@@ -22,11 +25,19 @@ export function Search() {
     }
 
     if (pathname === "/productos") {
-      await GetProductsByName(search);
+      const { ok, message } = await GetProductsByName({ search });
+      if (!ok && message) {
+        toast.error(message);
+        return;
+      }
     }
 
     if (pathname === "/servicios") {
-      await GetServicesByName(search);
+      const { ok, message } = await GetServicesByName({ search });
+      if (!ok && message) {
+        toast.error(message);
+        return;
+      }
     }
 
     params.set("search", search);

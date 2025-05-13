@@ -1,4 +1,7 @@
-import { Form, TitleImage, Info, GoogleMaps } from "@/components";
+import { Form } from "@/components/contact/form/Form";
+import { GoogleMaps } from "@/components/contact/google-maps/GoogleMaps";
+import { Info } from "@/components/contact/info/Info";
+import { TitleImage } from "@/components/ui/title-image/TitleImage";
 
 export default function Contacto() {
   return (

@@ -1,7 +1,9 @@
 "use client";
+
 import Image from "next/image";
-import { Transition, Carousel } from "@/components";
-import { AboutCarousel } from "./data/carouselAbout";
+import { Carousel } from "components/home";
+import { Transition } from "components/ui";
+import { AboutCarousel } from "./carouselAbout";
 
 export default function Nosotros() {
   return (

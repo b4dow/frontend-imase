@@ -1,36 +1,36 @@
-import { GetProducts, GetProductsByName, TotalProducts } from "@/actions";
-import { TitleImage, Search, CardGrid, Pagination } from "@/components";
-import { Product } from "@/interface";
 import { redirect } from "next/navigation";
+import { GetProducts, GetProductsByName } from "actions/product";
+import { CardGrid, TitleImage, Search } from "components/ui";
+import { Pagination } from "components/ui/pagination/Pagination";
+import { Product } from "interface";
 
 interface Props {
-  searchParams: Promise<{ search: string }>;
+  searchParams: Promise<{ search: string; page?: string }>;
 }
 
 export default async function ProductPage({ searchParams }: Props) {
-  const { search } = await searchParams;
+  const { search, page } = await searchParams;
+  const pageNumber = page ? +page : 1;
+  console.log({ pageNumber });
 
-  const products = await GetProducts();
+  const { products, totalPages } = search
+    ? await GetProductsByName({ search, page: pageNumber })
+    : await GetProducts({ page: pageNumber });
 
-  const productsByName = await GetProductsByName(search);
+  if (!products) redirect("/empty");
 
-  const totalPages = await TotalProducts();
-
-  if (!products?.length) return;
-
-  if (!totalPages) return;
+  if (!totalPages) redirect("/empty");
 
   return (
     <>
       <TitleImage urlImage="/banner-products.jpeg">Productos</TitleImage>
-      <div className="md:container mx-auto">
+      <div className="md:container mx-auto ">
         <Search />
 
-        {search ? (
-          <CardGrid<Product>
-            data={productsByName as Product[]}
-            title="productos"
-          />
+        {!products ? (
+          <p className="text-lg text-center mt-10">
+            No hay productos disponibles
+          </p>
         ) : (
           <CardGrid<Product> data={products} title="productos" />
         )}

@@ -1,4 +1,4 @@
-import { Carousel, About, Service, Product } from "@/components";
+import { About, Carousel, Product, Service } from "components/home";
 
 export default function HomePage() {
   return (

@@ -1,16 +1,20 @@
-import { GetServices } from "@/actions";
-import { Pagination, Table } from "@/components";
-import { Service } from "@/interface";
+import { Service } from "@/interface/service.interface";
+import { columns } from "./Column";
+import { DataTable } from "./DataTable";
+import { GetServices } from "@/actions/service/get-services";
+
+async function getData(): Promise<Service[]> {
+  const { services } = await GetServices({});
+  return services;
+}
 
 export const TableServices = async () => {
-  const services = await GetServices();
+  const data = await getData();
 
-  if (!services) return;
-
+  if (!data) return null;
   return (
     <>
-      <Table<Service> services={services} />
-      <Pagination />
+      <DataTable columns={columns} data={data} />
     </>
   );
 };

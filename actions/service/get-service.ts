@@ -10,7 +10,7 @@ export const GetService = async (
     const supabase = await createClient();
     const { data: service } = await supabase
       .from("services")
-      .select("*, image(url)")
+      .select("*")
       .eq("slug", slug)
       .single();
 

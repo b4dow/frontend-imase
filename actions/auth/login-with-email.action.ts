@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/utils";
+import { createClient } from "@/utils/supabase/server";
 
 interface Props {
   email: string;
@@ -10,21 +10,26 @@ interface Props {
 export const LoginWithEmail = async ({
   email,
   password,
-}: Props): Promise<{ success: boolean; message?: string }> => {
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+}: Props): Promise<{
+  ok: boolean;
+  message: string;
+}> => {
+  try {
+    const supabase = await createClient();
+    await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  if (error) {
     return {
-      success: false,
+      ok: true,
+      message: "Usuario Loggeado",
+    };
+  } catch (error) {
+    console.log("Error al iniciar sesión:", error);
+    return {
+      ok: false,
       message: "Credenciales Invalidas",
     };
   }
-
-  return {
-    success: true,
-  };
 };

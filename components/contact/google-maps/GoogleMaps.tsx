@@ -20,7 +20,7 @@ export const GoogleMaps = () => {
         lng: -77.04823958517467,
       };
 
-      const options: google.map.MapOptions = {
+      const options: google.maps.MapOptions = {
         center: location,
         zoom: 15,
         mapId: "map",

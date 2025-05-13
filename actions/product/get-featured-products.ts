@@ -8,7 +8,7 @@ export const getFeaturedProducts = async (limit: number) => {
 
     const { data: products } = await supabase
       .from("products")
-      .select("*, image(url)")
+      .select("*")
       .limit(limit);
 
     return products;

@@ -1,16 +1,16 @@
 "use client";
-import { UseMenu } from "@/hook/useMenu";
-import { NavbarMobile } from "./navbar-mobile/NavbarMobile";
+
 import Image from "next/image";
-import { NavbarDesktop } from "./navbar-desktop/NavbarDesktop";
 import Link from "next/link";
-import { useUiStore } from "@/store/ui/ui.store";
+import { useUiStore } from "store/ui/ui.store";
+import { NavbarMobile } from "./navbar-mobile/NavbarMobile";
+import { NavbarDesktop } from "./navbar-desktop/NavbarDesktop";
 
 export const Navbar = () => {
   const openSideMenu = useUiStore((state) => state.isSideOpenMenu);
 
   return (
-    <div className="flex items-center justify-between max-h-screen py-2 w-full mb-5 px-5 md:container">
+    <div className="flex items-center justify-between max-h-screen py-2 w-full my-2 px-5 md:container">
       <div>
         <Link href="/">
           <Image src="/logo.webp" alt="Logo Image" width={100} height={50} />

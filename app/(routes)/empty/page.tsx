@@ -1,5 +1,5 @@
-import { FaRegMoon } from "react-icons/fa";
 import Link from "next/link";
+import { FaRegMoon } from "react-icons/fa";
 
 const Empty = () => {
   return (

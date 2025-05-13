@@ -3,10 +3,7 @@ export interface Item {
   name: string;
   description: string;
   slug: string;
-  image: {
-    url: string;
-  };
-  public_id: string;
+  imageUrl: string;
   url: string;
   available: boolean;
 }

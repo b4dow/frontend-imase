@@ -1,4 +1,5 @@
 "use client";
+
 import { z } from "zod";
 
 export const SearchSchema = z.object({
@@ -67,9 +68,95 @@ export const UpdateSchema = z.object({
 
 export const SchemaLoginForm = z.object({
   email: z
-    .string({ message: "Correo electrónico inválido" })
-    .email("Correo electrónico inválido"),
+    .string({ message: "correo electrónico inválido" })
+    .email("correo electrónico inválido"),
   password: z
-    .string()
-    .min(6, { message: "La contraseña debe tener al menos 6 caracteres" }),
+    .string({ message: "la contraseña no puede ir vacía" })
+    .min(6, { message: "la contraseña debe tener al menos 6 caracteres" }),
+});
+
+export const SchemaNewProductForm = z.object({
+  id: z.string().uuid().optional().nullable(),
+  name: z
+    .string({ message: "El campo nombre no puede ir vacia" })
+    .min(3, { message: "el campo nombre tiene que tener minimo 3 caracteres" })
+    .max(50, {
+      message: "el campo nombre no puede tener mas de 50 caracteres",
+    }),
+  descriptionShort: z
+    .string({ message: "el campo de descripción no puede ir vacía" })
+    .min(10, {
+      message: "el campo descripción tiene que tener minimo 10 caracter",
+    })
+    .max(500, {
+      message: "el campo descripción no puede tener mas de 500 caracteres",
+    }),
+  description: z
+    .string({ message: "el campo de descripción no puede ir vacía" })
+    .min(10, {
+      message: "el campo descripción tiene que tener minimo 10 caracter",
+    }),
+  url: z
+    .string({ message: "el campo url no puede ir vacia" })
+    .min(3, { message: "el campo url tiene que tener minimo 3 caracteres" }),
+  slug: z
+    .string({ message: "el campo slug no puede ir vacía" })
+    .min(3, { message: "el campo slug tiene que tener minimo 3 caracter" }),
+});
+
+export const SchemaNewServiceForm = z.object({
+  id: z.string().uuid().optional().nullable(),
+  name: z
+    .string({ message: "El campo nombre no puede ir vacia" })
+    .min(3, { message: "el campo nombre tiene que tener minimo 3 caracteres" })
+    .max(50, {
+      message: "el campo nombre no puede tener mas de 50 caracteres",
+    }),
+  descriptionShort: z
+    .string({ message: "el campo de descripción no puede ir vacía" })
+    .min(10, {
+      message: "el campo descripción tiene que tener minimo 10 caracter",
+    })
+    .max(500, {
+      message: "el campo descripción no puede tener mas de 500 caracteres",
+    }),
+  description: z
+    .string({ message: "el campo de descripción no puede ir vacía" })
+    .min(10, {
+      message: "el campo descripción tiene que tener minimo 10 caracter",
+    }),
+  url: z
+    .string({ message: "el campo url no puede ir vacia" })
+    .min(3, { message: "el campo url tiene que tener minimo 3 caracteres" }),
+  slug: z
+    .string({ message: "el campo slug no puede ir vacía" })
+    .min(3, { message: "el campo slug tiene que tener minimo 3 caracter" }),
+});
+
+export const SchemaEditService = z.object({
+  name: z
+    .string({ message: "El campo nombre no puede ir vacia" })
+    .min(3, { message: "el campo nombre tiene que tener minimo 3 caracteres" })
+    .max(50, {
+      message: "el campo nombre no puede tener mas de 50 caracteres",
+    }),
+  descriptionShort: z
+    .string({ message: "el campo de descripción no puede ir vacía" })
+    .min(10, {
+      message: "el campo descripción tiene que tener minimo 10 caracter",
+    })
+    .max(500, {
+      message: "el campo descripción no puede tener mas de 500 caracteres",
+    }),
+  description: z
+    .string({ message: "el campo de descripción no puede ir vacía" })
+    .min(10, {
+      message: "el campo descripción tiene que tener minimo 10 caracter",
+    }),
+  url: z
+    .string({ message: "el campo url no puede ir vacia" })
+    .min(3, { message: "el campo url tiene que tener minimo 3 caracteres" }),
+  slug: z
+    .string({ message: "el campo slug no puede ir vacía" })
+    .min(3, { message: "el campo slug tiene que tener minimo 3 caracter" }),
 });

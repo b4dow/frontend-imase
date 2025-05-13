@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { TopMenu } from "@/components";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/dashboard/AppSidebar";
 
 interface Props {
   children: ReactNode;
 }
 
-const LayoutDashboard = async ({ children }: Props) => {
+const Layout = async ({ children }: Props) => {
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.getUser();
@@ -17,11 +18,12 @@ const LayoutDashboard = async ({ children }: Props) => {
   }
 
   return (
-    <>
-      <TopMenu email={data.user.email!} />
-      <div className="w-full p-10 ">{children}</div>
-    </>
+    <SidebarProvider>
+      <AppSidebar />
+
+      <SidebarTrigger />
+      <main className="w-full m-10">{children}</main>
+    </SidebarProvider>
   );
 };
-
-export default LayoutDashboard;
+export default Layout;

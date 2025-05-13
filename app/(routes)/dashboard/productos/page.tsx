@@ -1,12 +1,10 @@
 import { TableProducts } from "./ui/TableProducts";
 
-const ProductsDashboard = () => {
+export default async function ProductDashboard() {
   return (
-    <>
-      <h1 className="text-4xl text-center">Listado de Productos</h1>
+    <div className=" container mx-auto py-10 ">
+      <h1 className="text-4xl mb-5">Listado de Productos</h1>
       <TableProducts />
-    </>
+    </div>
   );
-};
-
-export default ProductsDashboard;
+}

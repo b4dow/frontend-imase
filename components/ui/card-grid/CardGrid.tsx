@@ -1,6 +1,6 @@
 "use client";
-import { Card } from "@/components";
-import { Item } from "@/interface";
+import { Item } from "@/interface/global.interface";
+import { Card } from "../card/Card";
 
 interface Props<T> {
   title: string;

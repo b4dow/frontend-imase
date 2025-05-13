@@ -1,5 +1,5 @@
 "use client";
-import { useUiStore } from "@/store";
+import { useUiStore } from "@/store/ui/ui.store";
 import clsx from "clsx";
 import Link from "next/link";
 import { IoCloseOutline } from "react-icons/io5";

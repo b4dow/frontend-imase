@@ -1,23 +1,21 @@
-import { CardGrid, TitleImage, Pagination, Search } from "@/components";
-import { GetServices, GetServicesByName, TotalServices } from "@/actions";
-import { Service } from "@/interface";
 import { redirect } from "next/navigation";
+import { GetServicesByName, GetServices } from "actions/service";
+import { TitleImage, Search, CardGrid, Pagination } from "components/ui";
+import { Service } from "interface";
 
 interface Props {
-  searchParams: Promise<{ search: string }>;
+  searchParams: Promise<{ search: string; page?: string }>;
 }
 
 export default async function ServicePage({ searchParams }: Props) {
-  const { search } = await searchParams;
+  const { search, page } = await searchParams;
+  const pageNumber = page ? +page : 1;
 
-  const services = await GetServices();
-  const totalPages = await TotalServices();
+  const { services, totalPages } = search
+    ? await GetServicesByName({ search, page: pageNumber })
+    : await GetServices({ page: pageNumber });
 
-  const servicesByName = await GetServicesByName(search);
-
-  if (!services?.length) redirect("/empty");
-
-  if (!totalPages) redirect("/empty");
+  if (!services) redirect("/empty");
 
   return (
     <>
@@ -26,14 +24,9 @@ export default async function ServicePage({ searchParams }: Props) {
       <div className="container mx-auto">
         <Search />
 
-        {search ? (
-          <CardGrid<Service>
-            data={servicesByName as Service[]}
-            title="servicios"
-          />
-        ) : (
-          <CardGrid<Service> data={services} title="servicios" />
-        )}
+        <CardGrid<Service> data={services} title="servicios" />
+
+        <Pagination totalPages={totalPages} />
       </div>
     </>
   );
